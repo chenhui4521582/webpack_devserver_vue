@@ -1,0 +1,41 @@
+<div id="login">
+    <form @submit.prevent="submit">
+        <div class="mr">
+            <label>国家/地区</label>
+            <select name="" id="" v-model="country">
+                <option value="">请选择国家或者地区</option>
+                <option value="中国">中国</option>
+                <option value="德国">德国</option>
+                <option value="日本">日本</option>
+                <option value="美国">美国</option>
+                <option value="香港">香港</option>
+            </select>
+        </div>
+        <div class="mr">
+            <label>手机号码</label>
+            <input type="text" name="mobile" :class="{'error':errors.has('mobile'),'code-input':true}" v-model="mobile" v-validate="'required|mobile'" placeholder="请输入密码">
+            <button class="get-code" type="button">获取验证码</button>
+            <p v-show="errors.has('mobile')" class="help is-danger">手机号码不正确</p>
+        </div>
+        <div class="mr">
+            <label>验证码</label>
+            <input type="text" name="code" :class="{'error':errors.has('code')}" v-model="code" v-validate="{required: true, regex: /^\d{4}$/ }" placeholder="请输入验证码">
+            <p v-show="errors.has('code')" class="help is-danger">请输入验证码</p>
+        </div>
+        <div class="mr">
+            <label>登录密码</label>
+            <input type="password" name="password" :class="{'error':errors.has('password')}" v-model="password" v-validate="{required:true,regex:/^[a-zA-Z0-9]{6,18}$/}" placeholder="请输入密码" ref="password">
+            <p v-show="errors.has('password')" class="help is-danger">密码格式错误</p>
+        </div>
+        <div class="mr">
+            <label>确认密码</label>
+            <input type="password" name="confirmedPassword" :class="{'error':errors.has('confirmedPassword')}" v-model="confirmedPassword" v-validate="'required|confirmed:password'" placeholder="请输入密码">
+            <p v-show="errors.has('confirmedPassword')" class="help is-danger">两次输入密码不一致</p>
+        </div>
+        <div class="mr">
+            <button type="submit" class="submit">提交</button>
+        </div>
+        {{user_info.user_name}}
+        {{aa}}
+    </form>
+</div>
