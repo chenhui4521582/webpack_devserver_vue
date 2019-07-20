@@ -10,7 +10,6 @@ let path = require('path'),
             path:path.resolve(__dirname,'dist'),
             filename:"./js/[name].build.js"
         },
-
         /*/特例/*/
         resolve: {
             //import  省略后缀名
@@ -22,7 +21,6 @@ let path = require('path'),
                 '@modules': path.resolve('app/modules')
             }
         },
-
         /*/ 设置开发环境的文件编译 /*/
         module:{
             rules:[
@@ -125,5 +123,3 @@ let path = require('path'),
         )
     });
     module.exports = webpackConfig;
-
-
